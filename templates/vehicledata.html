@@ -77,21 +77,30 @@
 
         .result {
             margin-top: 30px;
-            background-color: #eafaf1;
-            border-left: 6px solid #2ecc71;
             padding: 15px 20px;
             border-radius: 10px;
             font-size: 18px;
             font-weight: bold;
-            color: #1e8449;
-            box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result.success {
+            background-color: #eafaf1;
+            border-left: 6px solid #2ecc71;
+            color: #1e8449;
+        }
+
+        .result.warning {
+            background-color: #fff6e5;
+            border-left: 6px solid #e67e22;
+            color: #a04000;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚗 Your Vehicle Insurance Prediction Model</h1>
+        <h1>🚗 Vehicle Insurance Prediction</h1>
 
         <form method="post" action="/">
             <label for="Gender">Gender (1: Male, 0: Female)</label>
@@ -135,8 +144,8 @@
         </form>
 
         {% if context %}
-            <div class="result">
-                Result: {{ context }}
+            <div class="result {% if 'Great' in context %}success{% else %}warning{% endif %}">
+                {{ context }}
             </div>
         {% endif %}
     </div>
